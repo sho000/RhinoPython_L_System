@@ -97,8 +97,8 @@ if __name__ == '__main__':
 #    angle = 90
 #    step = 300
     
-#    # コッホ曲線
-#    numIters = 3
+    # コッホ曲線
+#    numIters = 4
 #    # ω:初期文字列
 #    startStr = '-F'
 #    # P:置換規則
@@ -108,18 +108,18 @@ if __name__ == '__main__':
 #    angle = 90
 #    step = 300
     
-#    # コッホ島
-#    numIters = 3
-#    # ω:初期文字列
-#    startStr = 'F-F-F-F'
-#    # P:置換規則
-#    rules = {}
-#    rules['F'] = 'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F'
-#    # val
-#    angle = 90
-#    step = 300
+    # コッホ島
+    numIters = 4
+    # ω:初期文字列
+    startStr = 'F-F-F-F'
+    # P:置換規則
+    rules = {}
+    rules['F'] = 'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F'
+    # val
+    angle = 90
+    step = 300
     
-#    # tree
+    # tree
 #    numIters = 4
 #    # ω:初期文字列
 #    startStr = 'F'
@@ -131,16 +131,16 @@ if __name__ == '__main__':
 #    step = 300
     
     # tree
-    numIters = 6
-    # ω:初期文字列
-    startStr = 'X'
-    # P:置換規則
-    rules = {}
-    rules['X'] = 'F[+X]F[-X]+X'
-    rules['F'] = 'FF'
-    # val
-    angle = 20
-    step = 300
+#    numIters = 6
+#    # ω:初期文字列
+#    startStr = 'X'
+#    # P:置換規則
+#    rules = {}
+#    rules['X'] = 'F[+X]F[-X]+X'
+#    rules['F'] = 'FF'
+#    # val
+#    angle = 20
+#    step = 300
     
     # instance
     ls = LSystem(numIters,startStr,rules,angle,step)
