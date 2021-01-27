@@ -27,6 +27,15 @@ class LSystem():
         
         print("resultStrs={}".format(self.resultStrs))
     
+    def iterations(self,oldStr):
+        newStr = ""
+        for i in range(self.numIters):
+            print("n={0}".format(i))
+            newStr = self.replaceProccess(oldStr)
+            print("newStr={0}".format(newStr))
+            oldStr = newStr
+            self.resultStrs.append(newStr)
+            
     # inputがルールのkeyに適合すればvalに置換してoutputを返す
     # そうじゃなければ、そのままinputをoutputとして返す
     def replace(self,input):
@@ -45,15 +54,6 @@ class LSystem():
             replacedChar = self.replace(char)
             newStr = newStr+replacedChar
         return newStr
-        
-    def iterations(self,oldStr):
-        newStr = ""
-        for i in range(self.numIters):
-            print("n={0}".format(i))
-            newStr = self.replaceProccess(oldStr)
-            print("newStr={0}".format(newStr))
-            oldStr = newStr
-            self.resultStrs.append(newStr)
             
     def draw(self,input,oldPt):
         angle = 0
@@ -108,19 +108,19 @@ if __name__ == '__main__':
 #    angle = 90
 #    step = 300
     
-    # コッホ島
-    numIters = 4
-    # ω:初期文字列
-    startStr = 'F-F-F-F'
-    # P:置換規則
-    rules = {}
-    rules['F'] = 'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F'
-    # val
-    angle = 90
-    step = 300
+#    # コッホ島
+#    numIters = 4
+#    # ω:初期文字列
+#    startStr = 'F-F-F-F'
+#    # P:置換規則
+#    rules = {}
+#    rules['F'] = 'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F'
+#    # val
+#    angle = 90
+#    step = 300
     
     # tree
-#    numIters = 4
+#    numIters = 2
 #    # ω:初期文字列
 #    startStr = 'F'
 #    # P:置換規則
@@ -131,7 +131,7 @@ if __name__ == '__main__':
 #    step = 300
     
     # tree
-#    numIters = 6
+#    numIters = 1
 #    # ω:初期文字列
 #    startStr = 'X'
 #    # P:置換規則
@@ -141,6 +141,18 @@ if __name__ == '__main__':
 #    # val
 #    angle = 20
 #    step = 300
+    
+    # tree
+    numIters = 2
+    # ω:初期文字列
+    startStr = 'F'
+    # P:置換規則
+    rules = {}
+#    rules['X'] = 'F[+X][-X]'
+    rules['F'] = 'FF-[-F+F+F]+[+F-F-F]'
+    # val
+    angle = 22.5
+    step = 300
     
     # instance
     ls = LSystem(numIters,startStr,rules,angle,step)
