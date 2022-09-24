@@ -35,7 +35,14 @@ class LSystem():
             print("newStr={0}".format(newStr))
             oldStr = newStr
             self.resultStrs.append(newStr)
-            
+    
+    def replaceProccess(self,oldStr):
+        newStr = ""
+        for char in oldStr:
+            replacedChar = self.replace(char)
+            newStr = newStr+replacedChar
+        return newStr
+
     # inputがルールのkeyに適合すればvalに置換してoutputを返す
     # そうじゃなければ、そのままinputをoutputとして返す
     def replace(self,input):
@@ -47,18 +54,12 @@ class LSystem():
             else:
                 output = input
         return output
-        
-    def replaceProccess(self,oldStr):
-        newStr = ""
-        for char in oldStr:
-            replacedChar = self.replace(char)
-            newStr = newStr+replacedChar
-        return newStr
             
-    def draw(self,input,oldPt):
+    def draw(self):
         angle = 0
+        oldPt = [0,0,0]
         num = []  # stack for the brackets
-        for char in input:
+        for char in self.resultStrs[-1]:
             if(char == "F"):
                 newPt = [0,1,0]
                 newPt = rs.VectorRotate(newPt,angle,[0,0,1])
@@ -120,35 +121,34 @@ if __name__ == '__main__':
 #    step = 300
     
     # tree
-#    numIters = 2
-#    # ω:初期文字列
-#    startStr = 'F'
-#    # P:置換規則
-#    rules = {}
-#    rules['F'] = 'F[+F]F[-F]F'
-#    # val
-#    angle = 25.7
-#    step = 300
+    # numIters = 3
+    # # ω:初期文字列
+    # startStr = 'F'
+    # # P:置換規則
+    # rules = {}
+    # rules['F'] = 'F[+F]F[-F]F'
+    # # val
+    # angle = 25.7
+    # step = 300
     
     # tree
-#    numIters = 1
-#    # ω:初期文字列
-#    startStr = 'X'
-#    # P:置換規則
-#    rules = {}
-#    rules['X'] = 'F[+X]F[-X]+X'
-#    rules['F'] = 'FF'
-#    # val
-#    angle = 20
-#    step = 300
+    # numIters = 5
+    # # ω:初期文字列
+    # startStr = 'X'
+    # # P:置換規則
+    # rules = {}
+    # rules['X'] = 'F[+X]F[-X]+X'
+    # rules['F'] = 'FF'
+    # # val
+    # angle = 20
+    # step = 100
     
     # tree
-    numIters = 2
+    numIters = 4
     # ω:初期文字列
     startStr = 'F'
     # P:置換規則
     rules = {}
-#    rules['X'] = 'F[+X][-X]'
     rules['F'] = 'FF-[-F+F+F]+[+F-F-F]'
     # val
     angle = 22.5
@@ -159,6 +159,5 @@ if __name__ == '__main__':
     
     # draw
     rs.EnableRedraw(False)
-#    ls.draw("FFF-FF+F",[0,0,0],0)
-    ls.draw(ls.resultStrs[-1],[0,0,0])
+    ls.draw()
     rs.EnableRedraw(True)
